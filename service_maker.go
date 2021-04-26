@@ -81,11 +81,14 @@ func (sm *ServiceMaker) linuxCopyFiles() error {
 	serviceDir, err := fs.Stat(fsys, ".")
 	if err != nil {
 		if os.IsNotExist(err) {
-			err = os.Mkdir(sm.ExecDir, os.FileMode(0644))
+			err = os.Mkdir(sm.ExecDir, os.FileMode(0655))
 			if err != nil {
 				return fmt.Errorf("error creating directory (%s) for executable: \n%v", sm.ExecDir, err)
 			}
-
+			serviceDir, err = fs.Stat(fsys, ".")
+			if err != nil {
+				return fmt.Errorf("error getting directory: %v", err)
+			}
 		} else {
 			return fmt.Errorf("error when opening exec dir %s: \n%v", sm.ExecDir, err)
 		}
