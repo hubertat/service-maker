@@ -175,7 +175,7 @@ func (sm *ServiceMaker) linuxInstallService() error {
 func (sm *ServiceMaker) InstallService() error {
 	switch runtime.GOOS {
 	case "linux":
-		return sm.InstallService()
+		return sm.linuxInstallService()
 	default:
 		return fmt.Errorf("Error ServiceMaker InstallService failed: unsupported operating system.")
 	}
