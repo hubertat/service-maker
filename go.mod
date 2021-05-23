@@ -1,3 +1,3 @@
-module github.com/hubertat/service-maker
+module github.com/hubertat/servicemaker
 
 go 1.16
